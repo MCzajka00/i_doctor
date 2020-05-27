@@ -9,6 +9,14 @@ Docs:
     
 3. Handle db using flask_migrate
     - flask db init (for initialize db migration)
-    - flask db migration (for create migration)
-    - flask db upgrade -m "name upgrading db using migration"
+    - flask db migration -m (for create migration)
+    - flask db upgrade "name upgrading db using migration"
     
+4. Generate secret_key:
+
+```python
+
+import random
+random._urandom(16)
+
+```

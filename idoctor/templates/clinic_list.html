@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Clinic list
+{% endblock %}
+
+{% block content %}
+    <h2>Clinics</h2>
+
+    <ul>
+        {% if clinics %}
+            {% for clinic in clinics %}
+                <li>
+                    {% include 'clinic.html' %}
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No clinics added yet.</li>
+        {% endif %}
+    </ul>
+
+<a href="{{ url_for('clinic.clinic') }}">Add clinic</a>
+{% endblock %}

@@ -1,0 +1,4 @@
+<a href="">
+    {{ clinic.name }} <br> {{ clinic.address }} <br>
+    <a href="{{ url_for('clinic.clinic_edit', clinic_id=clinic.id) }}">Edit clinic</a>
+</a>

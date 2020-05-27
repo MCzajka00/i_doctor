@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add clinic
+{% endblock %}
+
+{% block content %}
+    <h2>Add clinic</h2>
+
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.errors }}
+    </div>
+    <div>
+        {{ form.name.label }}
+        {{ form.name() }}
+    </div>
+    <div>
+        {{ form.address.label }}
+        {{ form.address() }}
+    </div>
+    <hr>
+    {{ form.submit() }}
+</form>
+{% endblock %}
