@@ -1,45 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-</head>
-<body>
+{% extends 'bootstrap/base.html' %}
+
+{% block scripts %}
+  {{ super() }}
+  {{ datepicker.loader(theme='vader') }} {# to load jQuery-ui #}
+  {{ datepicker.picker(id=".dp") }}
+{% endblock %}
+
+{% block navbar %}
 <header class="box-header">
     <a href="" class="logo">
-        <img src="" alt="logo">
+        <img src="" alt="Logo">
     </a>
     <nav class="menu-main">
         <a href="" class="menu-item">Home</a>
         <a href="{{ url_for('clinic.clinics') }}" class="menu-item">Poradnia</a>
         <a href="" class="menu-item">Lekarz</a>
-        <a href="" class="menu-item">Kalendarz</a>
+        <a href="{{ url_for('calendar.calendar') }}" class="menu-item">Kalendarz</a>
     </nav>
 </header>
+{% endblock %}
 
+{% block content %}
 <section class="box-flash">
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
                 {% for message in messages %}
-                <li>{{ message }}</li>
+                    <li>{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
 </section>
-
-<main class="box-main">
-    {% block content %}
-
-    {% endblock %}
-</main>
-
-<footer class="box-footer"></footer>
-
-</body>
-</html>
+{% endblock %}

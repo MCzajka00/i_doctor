@@ -34,7 +34,7 @@ def clinic():
 # TODO add login required
 @clinic_bp.route('/edit/<int:clinic_id>', methods=['GET', 'POST'])
 def clinic_edit(clinic_id):
-    clinic_for_edit = Clinic.query.first_or_404(clinic_id)
+    clinic_for_edit = Clinic.query.filter_by(id=clinic_id).first_or_404()
     form = ClinicForm(obj=clinic_for_edit)
 
     if form.validate_on_submit():

@@ -3,6 +3,8 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_bootstrap import Bootstrap
+from flask_datepicker import datepicker
 
 
 db = SQLAlchemy()
@@ -17,13 +19,19 @@ def create_app():
 
     from idoctor.views.main_views import main_bp
     from idoctor.views.clinic_views import clinic_bp
+    from idoctor.views.calendar_views import calendar_bp
 
     idoctor.register_blueprint(main_bp)
     idoctor.register_blueprint(clinic_bp)
+    idoctor.register_blueprint(calendar_bp)
+    # TODO add support for doctors
 
     from idoctor.models.clinic_models import Clinic
     db.init_app(idoctor)
     migrate = Migrate(app=idoctor, db=db)
+
+    Bootstrap(idoctor)
+    datepicker(idoctor)
 
     return idoctor
 
