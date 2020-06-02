@@ -1,4 +1,5 @@
 from flask import Blueprint, redirect, url_for, render_template, flash, request
+from flask_login import login_required
 
 from idoctor import db
 from idoctor.forms.clinic_forms import ClinicForm
@@ -12,9 +13,9 @@ def clinics():
     return render_template('clinic_list.html', clinics=Clinic.get_clinics())
 
 
-# TODO add login required
 # TODO change function name clinic => clinic_add
 @clinic_bp.route('/add', methods=['GET', 'POST'])
+@login_required
 def clinic_add():
     form = ClinicForm()
 
@@ -31,8 +32,8 @@ def clinic_add():
     return render_template('clinic_form.html', form=form, title="Add clinic")
 
 
-# TODO add login required
 @clinic_bp.route('/edit/<int:clinic_id>', methods=['GET', 'POST'])
+@login_required
 def clinic_edit(clinic_id):
     clinic_for_edit = Clinic.query.filter_by(id=clinic_id).first_or_404()
     form = ClinicForm(obj=clinic_for_edit)
@@ -46,8 +47,9 @@ def clinic_edit(clinic_id):
     return render_template('clinic_form.html', form=form, title="Edit clinic")
 
 
-# TODO implement delete for clinic (login required)
+# TODO implement delete for clinic
 @clinic_bp.route('/delete/<int:clinic_id>', methods=['GET', 'POST'])
+@login_required
 def clinic_delete(clinic_id):
     clinic_for_delete = Clinic.query.get_or_404(clinic_id)
     form = ClinicForm(obj=clinic_for_delete)
