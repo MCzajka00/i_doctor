@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    iDoctor - login
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Login</h1>
+    <form action="{{ url_for('auth.login') }} method="post">
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.username.label }}
+            {{ form.username() }}
+            <br><hr>
+            {{ form.password.label }}
+            {{ form.password() }}
+            <br><hr>
+            {{ form.remember_me.label }}
+            {{ form.remember_me() }}
+            <br><hr>
+            {{ form.submit() }}
+        </div>
+    </form>
+</section>
+{% endblock %}

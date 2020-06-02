@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ idoctor - Delete clinic
+{% endblock %}
+
+{% block content %}
+
+<section>
+    <h1>Confirm Delete</h1>
+    {% include "clinic.html" %}
+    <form action="{{ url_for('clinic.clinic_delete', clinic_id=clinic.id) }}"
+          method="post"
+    >
+        <span>Are you sure?</span><br><br>
+        <a href="{{ url_for('clinic.clinics') }}">No, take me out of here.</a>
+        <button type="submit">Yes, delete it</button>
+    </form>
+</section>
+
+{% endblock %}

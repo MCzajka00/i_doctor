@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, url_for, render_template, flash
+from flask import Blueprint, redirect, url_for, render_template, flash, request
 
 from idoctor import db
 from idoctor.forms.clinic_forms import ClinicForm
@@ -15,7 +15,7 @@ def clinics():
 # TODO add login required
 # TODO change function name clinic => clinic_add
 @clinic_bp.route('/add', methods=['GET', 'POST'])
-def clinic():
+def clinic_add():
     form = ClinicForm()
 
     if form.validate_on_submit():
@@ -47,6 +47,17 @@ def clinic_edit(clinic_id):
 
 
 # TODO implement delete for clinic (login required)
-@clinic_bp.route('/delete/<int:clinic_id>')
+@clinic_bp.route('/delete/<int:clinic_id>', methods=['GET', 'POST'])
 def clinic_delete(clinic_id):
-    pass
+    clinic_for_delete = Clinic.query.get_or_404(clinic_id)
+    form = ClinicForm(obj=clinic_for_delete)
+
+    if request.method == 'POST':
+        db.session.delete(clinic_for_delete)
+        db.session.commit()
+
+        flash(f"Deleted {form.name.data} successfully.")
+        return redirect(url_for('clinic.clinics'))
+    else:
+        flash(f"Please confirm deleting the clinic")
+    return render_template('confirm_delete.html', clinic=clinics, nolinks=True)
