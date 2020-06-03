@@ -12,10 +12,11 @@ clinic_bp = Blueprint('clinic', __name__, url_prefix='/clinics')
 def clinics():
     form = ClinicSearchForm(search=request.args.get('search'), meta={"csrf": False})
     form_delete = ClinicDeleteForm()
-    res = Clinic.get_clinics()
     if form.validate() and request.args.get('search') is not None:
         clinic_results = Clinic.query.filter(Clinic.name.like(f"%{request.args.get('search')}%")).all()
         res = [{"id": c.id, "name": c.name, "address": c.address} for c in clinic_results]
+    else:
+        res = Clinic.get_clinics()
     return render_template('clinic_list.html', form=form, clinics=res, form_delete=form_delete)
 
 

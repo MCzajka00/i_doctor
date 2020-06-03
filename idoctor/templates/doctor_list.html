@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Doctor list
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+    <h2>Doctors</h2>
+
+<form action="" method="get">
+    {{ form.search() }}
+    {{ form.submit() }}
+</form>
+
+    <ul>
+        {% if doctors %}
+            {% for doctor in doctors %}
+                <li>
+                    {% include 'doctor.html' %}
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No doctors added yet.</li>
+        {% endif %}
+    </ul>
+
+<a href="{{ url_for('doctor.doctor_add') }}">Add doctor</a>
+{% endblock %}

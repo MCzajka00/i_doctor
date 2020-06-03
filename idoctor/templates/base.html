@@ -14,7 +14,7 @@
     <nav class="menu-main">
         <a href="" class="menu-item">Home</a>
         <a href="{{ url_for('clinic.clinics') }}" class="menu-item">Poradnia</a>
-        <a href="" class="menu-item">Lekarz</a>
+        <a href="{{ url_for('doctor.doctors') }}" class="menu-item">Lekarz</a>
         <a href="{{ url_for('calendar.calendar') }}" class="menu-item">Kalendarz</a>
 
         {% if current_user.is_authenticated %}

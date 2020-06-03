@@ -23,15 +23,16 @@ def create_app():
     idoctor.config['SECRET_KEY'] = b'b\xad\x9e\xcc%""\xc2Yj(\x0e\xa5>\x16\x18'
 
     from idoctor.views.main_views import main_bp
+    from idoctor.views.doctor_views import doctor_bp
     from idoctor.views.clinic_views import clinic_bp
     from idoctor.views.calendar_views import calendar_bp
     from idoctor.auth import auth_bp
 
     idoctor.register_blueprint(main_bp)
+    idoctor.register_blueprint(doctor_bp)
     idoctor.register_blueprint(clinic_bp)
     idoctor.register_blueprint(calendar_bp)
     idoctor.register_blueprint(auth_bp)
-    # TODO add support for doctors
 
     from idoctor.models.clinic_models import Clinic
     db.init_app(idoctor)
