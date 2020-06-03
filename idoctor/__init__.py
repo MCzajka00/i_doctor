@@ -26,12 +26,14 @@ def create_app():
     from idoctor.views.doctor_views import doctor_bp
     from idoctor.views.clinic_views import clinic_bp
     from idoctor.views.calendar_views import calendar_bp
+    from idoctor.views.visit_views import visit_bp
     from idoctor.auth import auth_bp
 
     idoctor.register_blueprint(main_bp)
     idoctor.register_blueprint(doctor_bp)
     idoctor.register_blueprint(clinic_bp)
     idoctor.register_blueprint(calendar_bp)
+    idoctor.register_blueprint(visit_bp)
     idoctor.register_blueprint(auth_bp)
 
     from idoctor.models.clinic_models import Clinic

@@ -28,8 +28,9 @@ def doctor_add():
     if form.validate_on_submit():
         name = form.name.data
         specialization = form.specialization.data
+        duration_visit = form.duration_visit.data
 
-        new_doctor = Doctor(name=name, specialization=specialization)
+        new_doctor = Doctor(name=name, specialization=specialization, duration_visit=duration_visit)
         db.session.add(new_doctor)
         db.session.commit()
 

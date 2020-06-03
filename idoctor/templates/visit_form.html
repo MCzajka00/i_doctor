@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Add doctor
+    {{ title }}
 {% endblock %}
 
 {% block content %}
-    <h2>Add doctor</h2>
+    <h2>{{ title }}</h2>
 
 <form action="" method="post">
     {{ form.hidden_tag() }}
@@ -13,16 +13,12 @@
         {{ form.errors }}
     </div>
     <div>
-        {{ form.name.label }}
-        {{ form.name() }}
-    </div>
-     <div>
-        {{ form.duration_visit.label }}
-        {{ form.duration_visit() }}
+        {{ form.start_visit.label }}
+        {{ form.start_visit() }}
     </div>
     <div>
-        {{ form.specialization.label }}
-        {{ form.specialization() }}
+        {{ form.start_visit_hour.label }}
+        {{ form.start_visit_hour() }}
     </div>
     <hr>
     {{ form.submit() }}

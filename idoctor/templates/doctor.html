@@ -1,5 +1,5 @@
 <a href="">
-    {{ doctor.name }} <br> {{ doctor.specialization }} <br>
+    {{ doctor.name }} <br> {{ doctor.specialization }} <br> {{ doctor.duration_visit }}
     <a href="{{ url_for('doctor.doctor_edit', doctor_id=doctor.id) }}">Edit doctor</a>
 
     <form action="{{ url_for('doctor.doctor_delete', doctor_id=doctor.id) }}" method="post">
