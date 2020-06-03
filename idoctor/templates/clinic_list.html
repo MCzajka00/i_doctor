@@ -8,6 +8,11 @@
     {{ super() }}
     <h2>Clinics</h2>
 
+<form action="" method="get">
+    {{ form.search() }}
+    {{ form.submit() }}
+</form>
+
     <ul>
         {% if clinics %}
             {% for clinic in clinics %}

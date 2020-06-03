@@ -1,4 +1,8 @@
 <a href="">
     {{ clinic.name }} <br> {{ clinic.address }} <br>
     <a href="{{ url_for('clinic.clinic_edit', clinic_id=clinic.id) }}">Edit clinic</a>
+
+    <form action="{{ url_for('clinic.clinic_delete', clinic_id=clinic.id) }}" method="post">
+        {{ form_delete.submit() }}
+    </form>
 </a>
