@@ -13,7 +13,6 @@ def clinics():
     return render_template('clinic_list.html', clinics=Clinic.get_clinics())
 
 
-# TODO change function name clinic => clinic_add
 @clinic_bp.route('/add', methods=['GET', 'POST'])
 @login_required
 def clinic_add():
@@ -47,7 +46,6 @@ def clinic_edit(clinic_id):
     return render_template('clinic_form.html', form=form, title="Edit clinic")
 
 
-# TODO implement delete for clinic
 @clinic_bp.route('/delete/<int:clinic_id>', methods=['GET', 'POST'])
 @login_required
 def clinic_delete(clinic_id):
