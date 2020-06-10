@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+    Visit list
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    <ul>
+        {% if visits %}
+            {% for visit in visits %}
+                <li>
+                    {{ visit.tms }} <br>
+                    {{ visit.name }} <br>
+                    <hr>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No visits</li>
+        {% endif %}
+    </ul>
+    <a href="{{ url_for('visit.visit_add') }}">Add visit</a>
+{% endblock %}

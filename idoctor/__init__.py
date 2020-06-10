@@ -7,6 +7,8 @@ from flask_bootstrap import Bootstrap
 from flask_datepicker import datepicker
 
 # configure db
+from idoctor.jinja_ext.moment import momentjs
+
 db = SQLAlchemy()
 basedir = os.path.abspath(os.path.dirname(__file__))
 db_path = os.path.join(basedir, 'dbs', 'idoctor.db')
@@ -43,6 +45,8 @@ def create_app():
 
     Bootstrap(idoctor)
     datepicker(idoctor)
+
+    idoctor.jinja_env.globals['momentjs'] = momentjs
 
     return idoctor
 

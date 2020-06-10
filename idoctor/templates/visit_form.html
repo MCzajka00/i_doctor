@@ -13,6 +13,14 @@
         {{ form.errors }}
     </div>
     <div>
+        {{ form.clinic.label }}
+        {{ form.clinic() }}
+    </div>
+    <div>
+        {{ form.doctor.label }}
+        {{ form.doctor() }}
+    </div>
+     <div>
         {{ form.start_visit.label }}
         {{ form.start_visit() }}
     </div>
